@@ -19,7 +19,7 @@ import java.util.stream.Stream;
  * @author Cade Beckers | 7/25/2024
  * Revised: 9/11/2024
  */
-public class MyEncryption {
+public class Encryption {
     public void main() throws IOException {
         String password = "password";
         String folder;
@@ -74,8 +74,8 @@ public class MyEncryption {
             case 0 -> {
                 for (int i = 1; i < files.size();i++) {
                     byte[] byteArray = (byte[]) Files.readAllBytes(Paths.get(files.get(i)));
-                    Decrypt decrypter = new Decrypt();
-                    byte[] DecryptedFile = decrypter.DecryptBytes(byteArray);
+                    Decrypt decryptor = new Decrypt();
+                    byte[] DecryptedFile = decryptor.DecryptBytes(byteArray);
                     File file = new File(files.get(i));
                     try (OutputStream output = new FileOutputStream(file)) {
                         output.write(DecryptedFile);
@@ -86,8 +86,8 @@ public class MyEncryption {
             case 1 -> {
                 for (int i = 1; i < files.size();i++) {
                     byte[] byteArray = (byte[]) Files.readAllBytes(Paths.get(files.get(i)));
-                    Encrypt encrypter = new Encrypt();
-                    byte[] EncryptedFile = encrypter.encryptBytes(byteArray);
+                    Encrypt encryptor = new Encrypt();
+                    byte[] EncryptedFile = encryptor.encryptBytes(byteArray);
                     File file = new File(files.get(i));
                     try (OutputStream output = new FileOutputStream(file)) {
                         output.write(EncryptedFile);
